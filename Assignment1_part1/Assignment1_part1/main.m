@@ -20,7 +20,7 @@ int main(int argc, const char * argv[])
         
         // Reading the input from file
         NSString *res = [NSString stringWithContentsOfFile:
-                         @"/Users/Adam/Documents/Otago_University/Third_Year/Semester02/COSC346/Assignments/Assignment01/Assignment1_part1/simple.ex"
+                         @"/Users/Adam/Documents/Otago_University/Third_Year/Semester02/COSC346/Assignments/Assignment01/OOAsgn01/Assignment1_part1/simple.ex"
                                                   encoding:NSUTF8StringEncoding error:nil];
         
         NSLog(@"file=%@", res);

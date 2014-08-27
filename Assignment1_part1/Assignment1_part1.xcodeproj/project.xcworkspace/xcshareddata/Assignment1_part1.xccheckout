@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4F19D90F-C71A-4D0B-9D97-72257F703D2E</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Assignment1_part1</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>CE5294D7-FFB4-4F0D-BA0D-44E3A70333DB</key>
+		<string>https://github.com/AdamSherlaw/SpaceOdyssey.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Assignment1_part1/Assignment1_part1.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>CE5294D7-FFB4-4F0D-BA0D-44E3A70333DB</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/AdamSherlaw/SpaceOdyssey.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CE5294D7-FFB4-4F0D-BA0D-44E3A70333DB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CE5294D7-FFB4-4F0D-BA0D-44E3A70333DB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>OOAsgn01</string>
+		</dict>
+	</array>
+</dict>
+</plist>

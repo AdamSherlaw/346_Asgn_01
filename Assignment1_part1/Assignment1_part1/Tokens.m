@@ -62,9 +62,7 @@
 {
     self = [super init];
     NSError *error;
-    regex = [NSRegularExpression
-             regularExpressionWithPattern:@"[0-9]+"
-             options:NSRegularExpressionCaseInsensitive error:&error];
+    regex = [NSRegularExpression regularExpressionWithPattern:@"[0-9]+" options:NSRegularExpressionCaseInsensitive error:&error];
     
     return self;
 }
