@@ -29,6 +29,7 @@
 @end
 
 
+
 @interface Expression : GrammarRule
 
 -(NSString *) parse:(NSString *)input;
@@ -37,9 +38,42 @@
 
 
 
-@interface TailExpr: GrammarRule
+@interface MulTerm : GrammarRule
+
+-(NSString *) parse: (NSString *)input;
+
+@end
+
+
+
+@interface MulTail : GrammarRule
+
+-(NSString *) parse: (NSString *)input;
+
+@end
+
+
+
+@interface SubMulTail : GrammarRule
+
+-(NSString *) parse: (NSString *)input;
+
+@end
+
+
+
+@interface ExprTail: GrammarRule
 
 -(NSString *) parse:(NSString *)input;
 
 @end
+
+
+@interface SubExprTail: GrammarRule
+
+-(NSString *) parse:(NSString *)input;
+
+@end
+
+
 

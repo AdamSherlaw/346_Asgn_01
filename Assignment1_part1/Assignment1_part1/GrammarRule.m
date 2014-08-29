@@ -45,7 +45,7 @@
         {
             [self setName:[rule name]];
             [self setValue:[rule value]];
-            //NSLog(@"NEXT %@", next);
+            NSLog(@"NEXT %@", next);
             return next;
         }
     }
@@ -61,7 +61,7 @@
 
 -(NSString *) parse:(NSString *)input
 {
-    //NSLog(@"EPSILON PARSE");
+    NSLog(@"EPSILON PARSE");
     // always succeeds. Doesn't consume anything.
     return input;
 }

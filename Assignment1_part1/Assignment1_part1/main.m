@@ -16,7 +16,10 @@ int main(int argc, const char * argv[])
     @autoreleasepool {
         
         Prog *expr = [[Prog alloc] init];
-        
+        //MulTail *multail = [[MulTail alloc] init];
+        //ExprTail *exprtail = [[ExprTail alloc] init];
+        //MulTerm *multerm = [[MulTerm alloc] init];
+    
         
         // Reading the input from file
         NSString *res = [NSString stringWithContentsOfFile:
@@ -26,14 +29,17 @@ int main(int argc, const char * argv[])
         NSLog(@"file=%@", res);
         NSLog(@"%i", [res characterAtIndex:[res length]-1]);
         
+        //res = [multail parse:res];
+        //res = [exprtail parse:res];
         res = [expr parse:res];
+        //res = [multerm parse: res];
         
         if ([res isEqual:@""])
             // successfully consumed all input
             printf(">>> %d\n", [expr value]);
         else
-            NSLog(@"Parse Error, unparsed: %@", res);
-    }
+          NSLog(@"Parse Error, unparsed: %@", res);
+        }
     
     return 0;
 }
