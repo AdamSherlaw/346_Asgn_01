@@ -1,9 +1,10 @@
 //
 //  Expression.h
-//  Assignment1_part1
+//  COSC346 - Assignment1_part1
 //
-//  Created by mccane on 7/11/14.
-//  Copyright (c) 2014 mccane. All rights reserved.
+//  Author: Adam Sherlaw
+//  Date: August 2014
+//  Skeleton project provided by mccane
 //
 
 #import <Foundation/Foundation.h>

@@ -1,9 +1,10 @@
 //
 //  GrammarRule.m
-//  Assignment1_part1
+//  COSC346 - Assignment1_part1
 //
-//  Created by mccane on 7/11/14.
-//  Copyright (c) 2014 mccane. All rights reserved.
+//  Author: Adam Sherlaw
+//  Date: August 2014
+//  Skeleton project provided by mccane
 //
 
 #import "GrammarRule.h"
@@ -34,18 +35,16 @@
 // string and return the suffix (possibly empty).
 -(NSString *) parse:(NSString *)input
 {
-    NSLog(@"Parsing Grammar Rule %@", input);
+    //NSLog(@"Parsing Grammar Rule %@", input);
     
     // For each grammar rule
     for (GrammarRule *rule in subrules)
     {
-        //NSLog(@"LOOPING");
         NSString *next = [rule parse:input];
         if (next != nil)
         {
             [self setName:[rule name]];
             [self setValue:[rule value]];
-            NSLog(@"NEXT %@", next);
             return next;
         }
     }
@@ -61,7 +60,6 @@
 
 -(NSString *) parse:(NSString *)input
 {
-    NSLog(@"EPSILON PARSE");
     // always succeeds. Doesn't consume anything.
     return input;
 }

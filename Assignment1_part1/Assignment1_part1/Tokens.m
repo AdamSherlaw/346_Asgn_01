@@ -1,9 +1,10 @@
 //
 //  Tokens.m
-//  Assignment1_part1
+//  COSC346 - Assignment1_part1
 //
-//  Created by mccane on 7/11/14.
-//  Copyright (c) 2014 mccane. All rights reserved.
+//  Author: Adam Sherlaw
+//  Date: August 2014
+//  Skeleton project provided by mccane
 //
 
 #import "Tokens.h"
@@ -13,7 +14,7 @@
 
 -(NSString *) parse:(NSString *)input
 {
-    NSLog(@"Parsing token: %@, %@", regex, input);
+    //NSLog(@"Parsing token: %@, %@", regex, input);
     // get rid of white space
     input = [input stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
@@ -27,7 +28,7 @@
     // set the name of the token based on the string that was matched
     [super setName: [input substringWithRange:rangeOfFirstMatch]];
     
-    NSLog(@"End Token result: %@", [self name]);
+    //NSLog(@"End Token result: %@", [self name]);
     
     // consume the matched part of the string and return the rest
     unsigned long start = rangeOfFirstMatch.location + rangeOfFirstMatch.length;
@@ -75,7 +76,7 @@
     if (res)
         [self setValue:[[self name] intValue]];
     
-    NSLog(@"Parse number value: %@, %i", [self name], [self value]);
+    //NSLog(@"Parse number value: %@, %i", [self name], [self value]);
     return res;
 }
 
