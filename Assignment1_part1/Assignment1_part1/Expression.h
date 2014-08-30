@@ -29,13 +29,18 @@
 @end
 
 
+@interface Print: GrammarRule
+
+-(NSString *) parse:(NSString *)input;
+
+@end
+
 
 @interface Expression : GrammarRule
 
 -(NSString *) parse:(NSString *)input;
 
 @end
-
 
 
 @interface MulTerm : GrammarRule
@@ -45,7 +50,6 @@
 @end
 
 
-
 @interface MulTail : GrammarRule
 
 -(NSString *) parse: (NSString *)input;
@@ -53,13 +57,11 @@
 @end
 
 
-
 @interface SubMulTail : GrammarRule
 
 -(NSString *) parse: (NSString *)input;
 
 @end
-
 
 
 @interface ExprTail: GrammarRule

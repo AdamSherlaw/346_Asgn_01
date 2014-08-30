@@ -19,7 +19,7 @@ int main(int argc, const char * argv[])
         //MulTail *multail = [[MulTail alloc] init];
         //ExprTail *exprtail = [[ExprTail alloc] init];
         //MulTerm *multerm = [[MulTerm alloc] init];
-    
+        //Print *pri = [[Print alloc] init];
         
         // Reading the input from file
         NSString *res = [NSString stringWithContentsOfFile:
@@ -33,13 +33,20 @@ int main(int argc, const char * argv[])
         //res = [exprtail parse:res];
         res = [expr parse:res];
         //res = [multerm parse: res];
+        //res = [pri parse:res];
+        
+        //printf(">>> %d\n", [pri value]);
+        //NSLog(@"Parse Error, unparsed: %@", res);
         
         if ([res isEqual:@""])
             // successfully consumed all input
             printf(">>> %d\n", [expr value]);
         else
           NSLog(@"Parse Error, unparsed: %@", res);
+        
         }
     
     return 0;
 }
+    
+

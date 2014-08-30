@@ -35,6 +35,24 @@
 @end
 
 
+@implementation Print
+
+
+-(NSString *) parse:input
+{
+    // Parse for print statement
+    Literal *state = [[Literal alloc] init: @"print"];
+    NSString *s1 = [state parse:input];
+    
+    if (s1 != nil) printf("PRINT statement found!");
+    return s1;
+}
+
+@end
+
+
+
+
 // Expression -> Number ExprTail
 // In this case, we need to redefine parse
 @implementation Expression
@@ -54,7 +72,7 @@
     // Parse for ExprTail
     ExprTail *tail = [[ExprTail alloc] init];
     NSString *s2 = [tail parse:s1];
-    //NSLog(@"Debug s2: %@", s2);
+
     if (s2 == nil) return s1;
     
     NSLog(@"\nExpr: Multerm: %d Tail: %d", [multerm value], [tail value]);
