@@ -9,6 +9,7 @@
 //  This is the top level object for all grammar rules in the recursive descent parser. Any rule, should be derived from this class.
 
 #import <Foundation/Foundation.h>
+#import "Variable.h"
 
 @interface GrammarRule : NSObject
 {
@@ -46,3 +47,4 @@
 +(Epsilon*) theEpsilon;
 
 @end
+

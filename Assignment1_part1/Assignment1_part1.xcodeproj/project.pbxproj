@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		661F42B019B2D91800D464C9 /* Variable.m in Sources */ = {isa = PBXBuildFile; fileRef = 661F42AF19B2D91800D464C9 /* Variable.m */; };
 		9CFDC802196F953B0048C810 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CFDC801196F953B0048C810 /* Foundation.framework */; };
 		9CFDC805196F953B0048C810 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDC804196F953B0048C810 /* main.m */; };
 		9CFDC809196F953B0048C810 /* Assignment1_part1.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9CFDC808196F953B0048C810 /* Assignment1_part1.1 */; };
@@ -29,6 +30,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		661F42AE19B2D91800D464C9 /* Variable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Variable.h; sourceTree = "<group>"; };
+		661F42AF19B2D91800D464C9 /* Variable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Variable.m; sourceTree = "<group>"; };
 		9CFDC7FE196F953B0048C810 /* Assignment1_part1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Assignment1_part1; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CFDC801196F953B0048C810 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9CFDC804196F953B0048C810 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -85,6 +88,8 @@
 				9CFDC804196F953B0048C810 /* main.m */,
 				9CFDC80F196F959F0048C810 /* GrammarRule.h */,
 				9CFDC810196F959F0048C810 /* GrammarRule.m */,
+				661F42AE19B2D91800D464C9 /* Variable.h */,
+				661F42AF19B2D91800D464C9 /* Variable.m */,
 				9CFDC815196FAB9E0048C810 /* Tokens.h */,
 				9CFDC816196FAB9E0048C810 /* Tokens.m */,
 				9CFDC812196F97770048C810 /* Expression.h */,
@@ -156,6 +161,7 @@
 			files = (
 				9CFDC814196F97770048C810 /* Expression.m in Sources */,
 				9CFDC805196F953B0048C810 /* main.m in Sources */,
+				661F42B019B2D91800D464C9 /* Variable.m in Sources */,
 				9CFDC811196F959F0048C810 /* GrammarRule.m in Sources */,
 				9CFDC817196FAB9E0048C810 /* Tokens.m in Sources */,
 			);

@@ -79,4 +79,17 @@
 @end
 
 
+@interface Assign: GrammarRule
+
+-(NSString *)parse:(NSString *)input;
+
+@end
+
+@interface Value: GrammarRule
+
+-(NSString *)parse:(NSString *)input;
+
+@end
+
+
 

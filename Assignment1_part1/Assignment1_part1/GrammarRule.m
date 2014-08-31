@@ -35,8 +35,6 @@
 // string and return the suffix (possibly empty).
 -(NSString *) parse:(NSString *)input
 {
-    //NSLog(@"Parsing Grammar Rule %@", input);
-    
     // For each grammar rule
     for (GrammarRule *rule in subrules)
     {
@@ -77,3 +75,4 @@
 }
 
 @end
+

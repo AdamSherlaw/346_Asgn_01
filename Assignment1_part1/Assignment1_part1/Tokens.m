@@ -14,7 +14,6 @@
 
 -(NSString *) parse:(NSString *)input
 {
-    //NSLog(@"Parsing token: %@, %@", regex, input);
     // get rid of white space
     input = [input stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
@@ -27,8 +26,6 @@
     
     // set the name of the token based on the string that was matched
     [super setName: [input substringWithRange:rangeOfFirstMatch]];
-    
-    //NSLog(@"End Token result: %@", [self name]);
     
     // consume the matched part of the string and return the rest
     unsigned long start = rangeOfFirstMatch.location + rangeOfFirstMatch.length;
@@ -76,8 +73,23 @@
     if (res)
         [self setValue:[[self name] intValue]];
     
-    //NSLog(@"Parse number value: %@, %i", [self name], [self value]);
     return res;
 }
 
 @end
+
+
+
+@implementation Variable // name
+
+-(id) init
+{
+    self = [super init];
+    NSError *error;
+    regex = [NSRegularExpression regularExpressionWithPattern:@"v[0-9]+" options:NSRegularExpressionCaseInsensitive error:&error];
+    [self setValue: 0];
+    return self;
+}
+
+@end
+

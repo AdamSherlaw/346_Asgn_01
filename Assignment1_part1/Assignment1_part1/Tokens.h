@@ -41,9 +41,19 @@
 
 @end
 
+
 // A literal is a token. All literals can use this class by passing in a string.
 @interface Literal: Token
 
 -(id) init:(NSString*)lit;
 
 @end
+
+
+
+@interface Variable: Token
+
+-(id) init;
+
+@end
+
