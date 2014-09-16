@@ -14,20 +14,21 @@
 
 -(NSString *) parse:(NSString *)input
 {
-    // get rid of white space
+    // Get rid of white space
     input = [input stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
-    // the matched token should start at position 0, otherwise it didn't match
+    // The matched token should start at position 0, otherwise it didn't
+    // match
     NSRange rangeOfFirstMatch = [regex rangeOfFirstMatchInString:input options:0 range:NSMakeRange(0, [input length])];
     
     if (NSEqualRanges(rangeOfFirstMatch, NSMakeRange(NSNotFound, 0))||
         (rangeOfFirstMatch.location != 0))
         return nil;
     
-    // set the name of the token based on the string that was matched
+    // Set the name of the token based on the string that was matched
     [super setName: [input substringWithRange:rangeOfFirstMatch]];
     
-    // consume the matched part of the string and return the rest
+    // Consume the matched part of the string and return the rest
     unsigned long start = rangeOfFirstMatch.location + rangeOfFirstMatch.length;
     unsigned long reslength = [input length]-start;
     return [input substringWithRange:NSMakeRange(start, reslength)];
@@ -44,8 +45,25 @@
     self = [super init];
     NSError *error;
     
-    // the regular expression is just the passed in literal
+    // The regular expression is just the passed in literal
     regex = [NSRegularExpression regularExpressionWithPattern:lit options:  NSRegularExpressionIgnoreMetacharacters error:&error];
+    
+    return self;
+}
+
+@end
+
+
+
+@implementation OperatorSet
+
+-(id) init:(NSString *)set
+{
+    self = [super init];
+    NSError *error;
+    
+    // The regular expression is the input set
+    regex = [NSRegularExpression regularExpressionWithPattern:set options:  NSRegularExpressionCaseInsensitive error:&error];
     
     return self;
 }
@@ -67,9 +85,10 @@
 
 -(NSString*)parse:(NSString*)input
 {
-    // first parse the input to find the token
+    // First parse the input to find the token
     NSString *res = [super parse:input];
-    // then extract the value from the token
+    
+    // Then extract the value from the token
     if (res)
         [self setValue:[[self name] intValue]];
     
@@ -77,19 +96,3 @@
 }
 
 @end
-
-
-
-@implementation Variable // name
-
--(id) init
-{
-    self = [super init];
-    NSError *error;
-    regex = [NSRegularExpression regularExpressionWithPattern:@"v[0-9]+" options:NSRegularExpressionCaseInsensitive error:&error];
-    [self setValue: 0];
-    return self;
-}
-
-@end
-

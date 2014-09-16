@@ -16,6 +16,7 @@
 -(id) init
 {
     self = [super init];
+    // Initialize the subrules array
     subrules = [[NSMutableArray alloc] init];
     
     return self;
@@ -24,15 +25,12 @@
 
 -(void) addRule:(GrammarRule *)rule
 {
+    // Add the Grammar Rule to the rules array
     [subrules addObject:rule];
 }
 
 
-// the general idea of the parse method is to call any parse methods for
-// non-terminals and to match (and consume) a part of the string for terminal
-// symbols.
-// The parse method should consume some prefix (possibly empty) of the
-// string and return the suffix (possibly empty).
+
 -(NSString *) parse:(NSString *)input
 {
     // For each grammar rule
@@ -49,7 +47,6 @@
     return nil;
 }
 
-
 @end
 
 
@@ -58,19 +55,17 @@
 
 -(NSString *) parse:(NSString *)input
 {
-    // always succeeds. Doesn't consume anything.
+    // always succeeds. Doesn't consume anything
     return input;
 }
 
 +(Epsilon *) theEpsilon
 {
-    
     static Epsilon *epsilon = nil;
-    
+    // Only create one instance of Epsilon object
     if (epsilon == nil)
-    {
         epsilon = [[Epsilon alloc] init];
-    }
+    
     return epsilon;
 }
 

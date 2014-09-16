@@ -10,9 +10,7 @@
 #import "Expression.h"
 #import "Tokens.h"
 
-//
-// Prog -> Print | Epsilon
-//
+
 @implementation Prog
 
 -(id)init
@@ -33,26 +31,25 @@
 @end
 
 
-//
-//Print -> print Expression Program
-//
+
+
 @implementation Print
 
 -(NSString *) parse:input
 {
-    // New instance of literal that parses for a print statement
+    // Parse for a print statement
     NSString *s1 = [[[Literal alloc] init: @"print"] parse:input];
     
     if (s1 == nil) return s1;
     
-    // Expression
+    // Parse for an Expression
     Expression *expr = [[Expression alloc] init];
     NSString *s2 = [expr parse:s1];
-
+    
     if (s2 == nil) return s2;
     printf(">>> %d\n", [expr value]);
     
-    // New instance of Prog that parses the remainder (s2) of the input
+    // Parse the remainder (s2) of the input
     return [[[Prog alloc] init] parse: s2];
 }
 
@@ -60,10 +57,6 @@
 
 
 
-
-//
-// Expression -> MultiplicationTerm ExpressionTail
-//
 @implementation Expression
 
 -(NSString *) parse:(NSString *)input
@@ -78,7 +71,7 @@
     // Parse for ExprTail
     ExprTail *tail = [[ExprTail alloc] init];
     NSString *s2 = [tail parse:s1];
-
+    
     if (s2 == nil) return s1;
     [self setValue:[multerm value] + [tail value]];
     
@@ -88,14 +81,12 @@
 @end
 
 
-//
-// MultiplicationTerm -> Number MultiplicationTail
-//
+
 @implementation MulTerm
 
 -(NSString *)parse:input
 {
-    //Parse for a Value
+    // Parse for a Value
     Value *val = [[Value alloc] init];
     NSString *s1 = [val parse:input];
     
@@ -103,7 +94,7 @@
     
     [self setValue:[val value]];
     
-    // MulTail
+    // Parse for a MulTail
     MulTail *multail = [[MulTail alloc] init];
     NSString *s2 = [multail parse:s1];
     
@@ -116,39 +107,36 @@
 @end
 
 
-//
-// MultiplicationTail -> SubMultiplicationTail | Epsilon
-//
+
 @implementation MulTail
 
 -(NSString *)parse:input
 {
+    // Parse the SubMulTail
     SubMulTail *sub = [[SubMulTail alloc] init];
     NSString *s1 = [sub parse:input];
     
-    // if sub parse fails
     if (s1 == nil) return s1;
     
     [self setValue:[sub value]];
+    
     return [[[Epsilon alloc] init] parse:s1];
 }
 
 @end
 
 
-//
-// SubMultiplicationTail -> '*' Number MultiplicationTail
-//
+
 @implementation SubMulTail
 
 -(NSString *) parse:input
 {
-    // Parse for * literal
+    // Parse for '*' literal
     NSString *s1 = [[[Literal alloc] init: @"*"] parse:input];
     
     if (s1 == nil) return s1;
-   
-    // Parse for a value
+    
+    // Parse for a Value
     Value *val = [[Value alloc] init];
     NSString *s2 = [val parse: s1];
     
@@ -168,9 +156,6 @@
 
 
 
-//
-// ExpressionTail -> SubExpressionTail | Epsilon
-//
 @implementation ExprTail
 
 -(NSString *)parse:input
@@ -183,23 +168,19 @@
 @end
 
 
-//
-// SubExpressionTail -> '+' MultiplicationTerm ExpressionTail
-//
+
 @implementation SubExprTail
 
 -(NSString *) parse:input
 {
-    // Retrieve the literal value
-    NSString *s1 = [[[Literal alloc]init: @"+"] parse: input];
-    
+    // Parse the set + or -
+    NSString *s1 = [[[OperatorSet alloc]init: @"[+|-]"] parse: input];
     if (s1 == nil) return s1;
     
     // Parse for the multerm
     MulTerm *multerm = [[MulTerm alloc] init];
     NSString *s2 = [multerm parse: s1];
     
-    // Multerm exists, set value
     if (s2 == nil) return s2;
     [self setValue: [multerm value]];
     
@@ -209,26 +190,35 @@
     
     if (s3 == nil) return s2;
     
-    [self setValue: [tail value] + [multerm value]];
+    // Parse for literal
+    if ([[[Literal alloc]init:@"+"] parse: input] != nil)
+        [self setValue: [multerm value] + [tail value]];
+    else
+        [self setValue: -[multerm value] + [tail value]];
     return s3;
 }
 
 @end
 
 
+
 @implementation Assign
 
 -(NSString *)parse:(NSString *)input
 {
-    // Parse for a variable name
+    // Create Variable Object to store
     Variable *var = [[Variable alloc] init];
-    NSString *s1 = [var parse:input];
+    
+    // Parse for a variable name
+    OperatorSet *varName = [[OperatorSet alloc] init:@"[a-z]+[0-9]*"];
+    NSString *s1 = [varName parse:input];
+    [var setName:[varName name]];
     
     if (s1 == nil) return s1;
     
-    // Parse for an equals
+    // Parse for a literal =
     NSString *s2 = [[[Literal alloc] init:@"="] parse: s1];
-
+    
     if (s2 == nil) return s2;
     
     // Parse for Expression
@@ -239,7 +229,7 @@
     
     // Set the value of the variable
     [var setValue:[expr value]];
-
+    
     // Store the variable in the variable dictionary
     [[VarStore VariableDict] addVariable:var];
     
@@ -255,17 +245,23 @@
 
 -(NSString *)parse:(NSString *)input
 {
-    Variable *varName = [[Variable alloc] init];
+    // Parse for varaiable name
+    OperatorSet *varName = [[OperatorSet alloc] init:@"[a-z]+[0-9]*"];
     NSString *s1 = [varName parse: input];
     
     if (s1 != nil) {
+        // Retrieve the dictionary
         NSMutableDictionary *dict = [[VarStore VariableDict] getDictionary];
+        
+        // Find the varaible
         Variable *temp = dict[[varName name]];
         
+        // Retrieve the variable value
         if (temp != nil) [self setValue:[temp value]];
         return s1;
     }
-
+    
+    // Parse for a number
     Number *num = [[Number alloc] init];
     NSString *s2 = [num parse:input];
     
@@ -274,4 +270,3 @@
 }
 
 @end
-

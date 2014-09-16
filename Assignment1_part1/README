@@ -1,0 +1,41 @@
+README
+PROJECT NAME: Assignment1_part1
+OWNER: Adam Sherlaw
+
+DESCRIPTION: Command-line expression interpreter that implements 
+             recursive descent parsing using object orientated programming
+             principles.
+
+FILES:
+
+GrammarRule.h : Interface file for GrammarRule. 
+GrammarRule.m : Implementation file for GrammarRule.
+    GrammarRule is the top level object that all rules inherit. 
+    This forms the base for all sub rules.
+
+
+Expression.h : Interface file for Expression. 
+Expression.m : Implementation file for Expression.
+    Expression contains the sub rule classes for the Grammar.
+    Sub rules are specific implementations of the GrammarRule parent class
+    and enforce the grammar.
+
+
+main.m : 
+    The entry into the program.
+    Handles the input and initialisation of the first program rule.
+
+
+Tokens.h : Interface file for Tokens 
+Tokens.m : Implementation file for Tokens.
+    Tokens handles the parsing of a token from a given string.
+    Token types are Number, Literal and OperatorSet.
+
+
+Variable.h : Interface file for Variable. 
+Variable.m : Implementation file for Variable.
+    Variable contains the singleton pattern for the varaiable storage 
+    Dictionary.
+    Variable also contains the variable class that is used to store the key 
+    value pairs in the dictionary.
+
